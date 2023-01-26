@@ -1,30 +1,36 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <Navbar @hide="hideScroll"/>
 </template>
 
+<script>
+import Header from './views/Header.vue'
+import Navbar from './views/Navbar.vue'
+
+
+export default {
+  data() {
+    return {
+    }
+  },
+  components: {
+    Header,
+    Navbar
+},
+  methods: {
+    hideScroll(data) {
+      console.log(data)
+      if (data) {
+        document.body.classList.add('hide')
+      } else {
+        document.body.classList.remove('hide')
+      }
+    }
+  }
+}
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+.hide {
+  overflow: hidden;
 }
 </style>
